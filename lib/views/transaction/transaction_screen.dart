@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:salman_expense_tracker/models/transaction_model.dart';
-import 'package:salman_expense_tracker/providers/home/home_provider.dart';
-import 'package:salman_expense_tracker/providers/transaction_providers/transaction_provider.dart';
+import 'package:salman_expense_tracker/providers/home_provider.dart';
+import 'package:salman_expense_tracker/providers/transaction_provider.dart';
 import 'package:salman_expense_tracker/views/common/styles.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -85,7 +85,7 @@ class TransactionScreen extends StatelessWidget {
                           hintText: "0",
                           hintStyle: customTextStyle(
                               largeHeading, FontWeight.w500,
-                              textColor: Colors.white.withOpacity(0.5)),
+                              textColor: const Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5)),
                           border: const OutlineInputBorder(
                               borderSide: BorderSide.none),
                         ),

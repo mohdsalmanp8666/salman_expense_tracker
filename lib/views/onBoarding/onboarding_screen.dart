@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:salman_expense_tracker/providers/onBoarding/OnBoardingProvider.dart';
+import 'package:salman_expense_tracker/providers/OnBoardingProvider.dart';
 import 'package:salman_expense_tracker/views/onBoarding/onboarding_widgets.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -23,6 +23,9 @@ class OnBoardingScreen extends StatelessWidget {
               itemBuilder: ((context, index) {
                 return PageContent(
                   imgName: index == 0 ? 'img1' : 'img2',
+                  title: index == 0
+                      ? 'Best way to track your Expenses.'
+                      : "Get a record of all your savings",
                 );
               }),
             ),

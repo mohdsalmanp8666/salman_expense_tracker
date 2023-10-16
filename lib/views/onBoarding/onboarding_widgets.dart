@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:salman_expense_tracker/providers/onBoarding/OnBoardingProvider.dart';
+import 'package:salman_expense_tracker/providers/OnBoardingProvider.dart';
+import 'package:salman_expense_tracker/providers/auth_provider.dart';
 import 'package:salman_expense_tracker/views/common/styles.dart';
 
 class PageContent extends StatelessWidget {
   final String imgName;
+  final String title;
   const PageContent({
     super.key,
     required this.imgName,
+    required this.title,
   });
 
   @override
@@ -15,13 +18,22 @@ class PageContent extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Image.asset(
             'assets/images/$imgName.jpg',
             filterQuality: FilterQuality.high,
           ),
-          // Text("Find the best path to nearest pharmacy")
+          Container(
+              margin: const EdgeInsets.only(top: 50, bottom: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              decoration: BoxDecoration(),
+              alignment: Alignment.center,
+              child: Text(
+                title,
+                style: customTextStyle(h3, FontWeight.w300),
+                textAlign: TextAlign.center,
+              ))
         ],
       ),
     );
@@ -46,7 +58,16 @@ class MainButton extends StatelessWidget {
         onPressed: () {
           (index == 0)
               ? readProvider.scrollPage(1)
-              : Navigator.popAndPushNamed(context, '/homeScreen');
+              : Navigator.popAndPushNamed(
+                  context,
+                  Provider.of<AuthProvider>(context, listen: false)
+                              .isSignedIn ==
+                          true
+                      ? '/homeScreen'
+                      : '/loginScreen');
+          // (index == 0)
+          //     ? readProvider.scrollPage(1)
+          //     : Navigator.popAndPushNamed(context, '/loginScreen');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,

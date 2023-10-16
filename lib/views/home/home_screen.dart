@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:salman_expense_tracker/providers/home/home_provider.dart';
+import 'package:salman_expense_tracker/providers/auth_provider.dart';
+import 'package:salman_expense_tracker/providers/home_provider.dart';
 import 'package:salman_expense_tracker/views/common/styles.dart';
 import 'package:salman_expense_tracker/views/home/home_screen_widgets.dart';
 
@@ -13,7 +14,6 @@ class HomeScreen extends StatelessWidget {
     //   var provider = Provider.of<HomeProvider>(context, listen: false);
     //   await provider.getValues();
     // }
-
     var read_homeProvider = context.read<HomeProvider>();
     var watch_homeProvider = context.watch<HomeProvider>();
     return Scaffold(
